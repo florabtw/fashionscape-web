@@ -5,13 +5,13 @@ import './SearchResults.css';
 const SearchResults = props => {
   const {results} = props;
 
-  if (results.length == 0) return null;
+  if (results.length === 0) return null;
 
   return (
     <section className="results">
       <ol className="grid">
         {results.map(item => (
-          <SearchResult {...item} />
+          <SearchResult key={item.wiki.pageId} {...item} />
         ))}
       </ol>
     </section>
@@ -23,11 +23,14 @@ const SearchResult = ({colors, name, images, wiki}) => {
     <li className="grid-item">
       <div className="name">{name}</div>
       <a className="image" href={wiki.link}>
-        <img src={images.detail} />
+        <img alt={name} src={images.detail} />
       </a>
       <div className="colors">
         {colors.map(color => (
-          <div className="color" style={{'background-color': color}}>
+          <div
+            className="color"
+            key={color}
+            style={{backgroundColor: color}}>
             {color}
           </div>
         ))}
