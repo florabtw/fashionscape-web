@@ -1,0 +1,61 @@
+.results {
+  background: #FAFAFA;
+  padding: 2rem 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-item {
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  list-style: none;
+}
+
+.grid-item .image {
+  margin: 0 auto;
+  max-height: 15rem;
+  padding: 2rem;
+  width: 60%;
+}
+
+.name {
+  font-size: 1.125rem;
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.image {
+  display: block;
+}
+
+.image img {
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.colors {
+  display: flex;
+}
+
+.color {
+  align-items: center;
+  color: #eeeeee;
+  display: flex;
+  flex: auto;
+  height: 3rem;
+  justify-content: center;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

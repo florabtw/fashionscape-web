@@ -1,0 +1,50 @@
+.search {
+  display: block;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+.color-picker {
+  align-items: flex-end;
+  color: #555555;
+  display: flex;
+  font-size: 0.75rem;
+  margin: 0.5rem auto;
+  width: 15rem;
+}
+
+.input {
+  display: block;
+  height: 3rem;
+  padding: 0;
+  width: 100%;
+}
+
+.input--text {
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.input--color {
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  flex: none;
+  margin-left: 0.25rem;
+  overflow: hidden;
+  padding: 0;
+  width: 3rem;
+}
+
+.input--submit {
+  background-color: #d8ccb4;
+  background-image: url('https://oldschool.runescape.wiki/images/9/95/Search.png?9a23f');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 70%;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 15rem;
+}
