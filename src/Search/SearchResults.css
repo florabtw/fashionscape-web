@@ -23,10 +23,9 @@
 }
 
 .grid-item .image {
+  height: 15rem;
   margin: 0 auto;
-  max-height: 15rem;
   padding: 2rem;
-  width: 60%;
 }
 
 .name {
@@ -41,9 +40,9 @@
 }
 
 .image img {
-  max-height: 100%;
-  width: 100%;
+  height: 100%;
   object-fit: contain;
+  width: 100%;
 }
 
 .colors {
