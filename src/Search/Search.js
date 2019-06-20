@@ -5,15 +5,16 @@ import SearchBox from './SearchBox';
 import SearchResults from './SearchResults';
 
 const Search = () => {
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState({slot: null, query: null});
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     const fetchResults = async () => {
       if (!search) return;
 
-      const hex = encodeURIComponent(search);
-      const url = `${config.fashionscapeApi}/colors/${hex}/items`;
+      const slot = search.slot || '';
+      const hex = encodeURIComponent(search.query);
+      const url = `${config.fashionscapeApi}/colors/${hex}/items?slot=${slot}`;
       const results = await fetch(url).then(res => res.json());
 
       setResults(results.items);
