@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ReactGA from 'react-ga';
 import Select from 'react-select';
 
 import './SearchBox.css';
@@ -26,7 +27,14 @@ const SearchBox = props => {
   const handleChange = event => setQuery(event.target.value);
   const handleSubmit = event => {
     event.preventDefault();
-    setSearch({ slot: slot && slot.value, query });
+
+    ReactGA.event({
+      category: 'Interaction',
+      action: 'Search by Color',
+      label: query
+    });
+
+    setSearch({slot: slot && slot.value, query});
   };
 
   return (
