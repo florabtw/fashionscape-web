@@ -10,14 +10,14 @@ const Search = () => {
 
   useEffect(() => {
     const fetchResults = async () => {
-      if (!search) return;
+      if (!search.query) return;
 
       const slot = search.slot || '';
       const hex = encodeURIComponent(search.query);
       const url = `${config.fashionscapeApi}/colors/${hex}/items?slot=${slot}`;
       const results = await fetch(url).then(res => res.json());
 
-      setResults(results.items);
+      if (results.items) setResults(results.items);
     };
 
     fetchResults();
