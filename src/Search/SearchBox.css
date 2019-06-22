@@ -1,75 +1,80 @@
 .search {
-  display: block;
-  padding: 2rem 1.5rem;
-  width: 100%;
+	display: block;
+	padding: 2rem 1.5rem;
+	width: 18rem;
+	border: solid 2px #7b5a46;
+	margin: 0 auto;
+	background: #e9d9c2;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 0.5rem;
 }
 
 .color-picker {
-  align-items: flex-end;
-  color: #555555;
-  display: flex;
-  font-size: 0.75rem;
-  margin: 0 auto 1rem;
-  width: 15rem;
+	align-items: flex-end;
+	color: #555555;
+	display: flex;
+	font-size: 0.75rem;
+	margin: 0 auto 1rem;
+	width: 15rem;
 }
 
 .input {
-  border: none;
-  border: 1px solid #333;
-  border-radius: 0.5rem;
-  display: block;
-  height: 3rem;
-  padding: 0;
-  width: 100%;
+	border: none;
+	border: 1px solid #333;
+	border-radius: 0.5rem;
+	display: block;
+	height: 3rem;
+	padding: 0;
+	width: 100%;
 }
 
 .input--text {
-  margin-top: 0.25rem;
-  padding: 0 1rem;
-  width: 100%;
+	margin-top: 0.25rem;
+	padding: 0 1rem;
+	width: 100%;
 }
 
 .input--color {
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  flex: none;
-  margin-left: 0.5rem;
-  overflow: hidden;
-  padding: 0;
-  width: 3rem;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	flex: none;
+	margin-left: 0.5rem;
+	overflow: hidden;
+	padding: 0;
+	width: 3rem;
 }
 
 input[type=color]::-webkit-color-swatch {
-  border: none;
-  padding: 0;
+	border: none;
+	padding: 0;
 }
 
 input[type=color]::-webkit-color-swatch-wrapper {
-  border: none;
-  padding: 0;
+	border: none;
+	padding: 0;
 }
 
 .input--submit {
-  background-color: #d8ccb4;
-  background-image: url('https://oldschool.runescape.wiki/images/9/95/Search.png?9a23f');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 70%;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  margin: 0 auto;
-  width: 15rem;
+	background-color: #d8ccb4;
+	background-image: url('https://oldschool.runescape.wiki/images/9/95/Search.png?9a23f');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 70%;
+	border: 2px solid black;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	margin: 0 auto;
+	width: 15rem;
 }
 
 .select {
-  margin: 1rem auto;
-  width: 15rem;
+	margin: 1rem auto;
+	width: 15rem;
 }
 
 @media (min-width: 768px) {
-  .search {
-    padding-bottom: 3rem;
-  }
+	.search {
+		padding-bottom: 3rem;
+	}
 }
