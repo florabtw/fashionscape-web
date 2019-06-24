@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import ReactGA from 'react-ga';
 import Select from 'react-select';
+import {Link} from 'react-router-dom';
 
 import ColorPicker from './ColorPicker';
 import ItemPicker from './ItemPicker';
@@ -21,40 +21,34 @@ const slotOptions = [
   {label: 'Weapon', value: 'Weapon'},
 ];
 
+const toOption = value => value && {label: value, value};
+const toUrl = ({color, isByColor, item, slot}) => {
+  const slotQuery = slot ? `?slot=${slot.value}` : '';
+
+  return isByColor
+    ? `/colors/${encodeURIComponent(color)}${slotQuery}`
+    : `/items/${encodeURIComponent(item)}${slotQuery}`;
+};
+
 const SearchBox = props => {
-  const {setSearch} = props;
+  const {
+    color: defaultColor,
+    item: defaultItem,
+    slot: defaultSlot,
+    isByColor: defaultIsByColor,
+  } = props;
 
-  const [color, setColor] = useState('#3C4C3C');
-  const [isByColor, setIsByColor] = useState(true);
-  const [item, setItem] = useState(null);
-  const [slot, setSlot] = useState(null);
+  const [color, setColor] = useState(defaultColor);
+  const [item, setItem] = useState(defaultItem);
+  const [slot, setSlot] = useState(toOption(defaultSlot));
+  const [isByColor, setIsByColor] = useState(defaultIsByColor);
 
-  const toggleByColor = e => {
-    e.preventDefault();
-    setIsByColor(!isByColor);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    ReactGA.event({
-      category: 'Interaction',
-      action: 'Search',
-      label: isByColor ? color : item.value,
-    });
-
-    setSearch({
-      color,
-      isByColor,
-      item: item && item.value,
-      slot: slot && slot.value,
-    });
-  };
+  const handleToggle = () => setIsByColor(!isByColor);
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <div className="search">
       <div className="search__row">
-        <button className="input input--square toggle" onClick={toggleByColor}>
+        <button className="input input--square toggle" onClick={handleToggle}>
           {isByColor ? 'By item' : 'By color'}
         </button>
         {isByColor ? (
@@ -87,8 +81,11 @@ const SearchBox = props => {
         })}
         value={slot}
       />
-      <input className="input input--submit" type="submit" value="" />
-    </form>
+      <Link
+        to={toUrl({color, isByColor, item, slot})}
+        className="input input--submit"
+      />
+    </div>
   );
 };
 

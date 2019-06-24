@@ -3,9 +3,11 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-select": "^3.0.4"
   },

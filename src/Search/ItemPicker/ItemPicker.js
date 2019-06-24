@@ -4,8 +4,11 @@ import config from '../../config';
 
 import './ItemPicker.css';
 
+const toOption = value => ({ label: value, value });
+
 const ItemPicker = props => {
   const {onChange, value} = props;
+  const option = toOption(value);
 
   const [options, setOptions] = useState([]);
 
@@ -46,17 +49,20 @@ const ItemPicker = props => {
           }}
           isClearable
           loadOptions={loadOptions}
-          onChange={onChange}
+          onChange={option => onChange(option.value)}
           placeholder="Search items..."
           styles={{
-            valueContainer: provided => ({
+            control: provided => ({
               ...provided,
-              cursor: 'text',
               height: '3rem',
             }),
             clearIndicator: provided => ({
               ...provided,
               cursor: 'pointer',
+            }),
+            valueContainer: provided => ({
+              ...provided,
+              cursor: 'text',
             }),
           }}
           theme={theme => ({
@@ -68,7 +74,7 @@ const ItemPicker = props => {
               neutral40: '#333333',
             },
           })}
-          value={value}
+          value={option}
         />
       </label>
     </div>

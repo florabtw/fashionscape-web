@@ -89,6 +89,7 @@ label {
   font-weight: bold;
   margin-right: 0.5rem;
   padding: 0.5rem;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
