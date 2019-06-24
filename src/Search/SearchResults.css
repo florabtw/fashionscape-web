@@ -57,6 +57,7 @@
   flex: auto;
   height: 3rem;
   justify-content: center;
+  text-decoration: none;
   text-transform: uppercase;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }

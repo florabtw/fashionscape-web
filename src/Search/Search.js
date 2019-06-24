@@ -49,7 +49,7 @@ const Search = props => {
   return (
     <div>
       <SearchBox color={color} isByColor={isByColor} item={item} slot={slot} />
-      <SearchResults results={results} />
+      <SearchResults results={results} slot={slot} />
     </div>
   );
 };
