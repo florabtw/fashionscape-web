@@ -49,7 +49,7 @@ const ItemPicker = props => {
           }}
           isClearable
           loadOptions={loadOptions}
-          onChange={option => onChange(option.value)}
+          onChange={option => onChange(option && option.value)}
           placeholder="Search items..."
           styles={{
             control: provided => ({
