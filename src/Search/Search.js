@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import ReactGA from 'react-ga';
 import queryString from 'query-string';
 
 import config from '../config';
@@ -27,6 +28,10 @@ const Search = props => {
   const slot = queryString.parse(location.search).slot;
 
   const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
 
   useEffect(() => {
     const fetchResults = async () => {

@@ -3,11 +3,8 @@ import {Switch,Route} from 'react-router-dom'
 
 import Header from './Header';
 import Search from './Search';
-import ReactGA from 'react-ga';
 
 const App = () => {
-  ReactGA.pageview('/');
-
   return (
     <>
       <Header />
