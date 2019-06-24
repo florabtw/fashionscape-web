@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import ReactGA from 'react-ga';
 import Select from 'react-select';
 
+import ColorPicker from './ColorPicker';
+import ItemPicker from './ItemPicker';
+
 import './SearchBox.css';
 
 const slotOptions = [
@@ -21,40 +24,44 @@ const slotOptions = [
 const SearchBox = props => {
   const {setSearch} = props;
 
-  const [query, setQuery] = useState('#3C4C3C');
+  const [color, setColor] = useState('#3C4C3C');
+  const [isByColor, setIsByColor] = useState(true);
+  const [item, setItem] = useState(null);
   const [slot, setSlot] = useState(null);
 
-  const handleChange = event => setQuery(event.target.value);
+  const toggleByColor = e => {
+    e.preventDefault();
+    setIsByColor(!isByColor);
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
 
     ReactGA.event({
       category: 'Interaction',
-      action: 'Search by Color',
-      label: query
+      action: 'Search',
+      label: isByColor ? color : item.value,
     });
 
-    setSearch({slot: slot && slot.value, query});
+    setSearch({
+      color,
+      isByColor,
+      item: item && item.value,
+      slot: slot && slot.value,
+    });
   };
 
   return (
     <form className="search" onSubmit={handleSubmit}>
-      <div className="color-picker">
-        <label>
-          Choose color (# hex)
-          <input
-            className="input input--text"
-            onChange={handleChange}
-            type="text"
-            value={query}
-          />
-        </label>
-        <input
-          className="input input--color"
-          onChange={handleChange}
-          type="color"
-          value={query}
-        />
+      <div className="search__row">
+        <button className="input input--square toggle" onClick={toggleByColor}>
+          {isByColor ? 'By item' : 'By color'}
+        </button>
+        {isByColor ? (
+          <ColorPicker onChange={setColor} value={color} />
+        ) : (
+          <ItemPicker onChange={setItem} value={item} />
+        )}
       </div>
       <Select
         className="select"
@@ -63,7 +70,11 @@ const SearchBox = props => {
         options={slotOptions}
         placeholder="Any Slot"
         styles={{
-          control: provided => ({...provided, height: '3rem'}),
+          control: provided => ({
+            ...provided,
+            cursor: 'pointer',
+            height: '3rem',
+          }),
         }}
         theme={theme => ({
           ...theme,
