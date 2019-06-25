@@ -15,9 +15,12 @@ label {
 }
 
 .search {
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
   display: block;
   padding: 2rem 1.5rem;
+  position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .search__row {

@@ -3,6 +3,7 @@ import {Switch,Route} from 'react-router-dom'
 
 import Header from './Header';
 import Search from './Search';
+import Footer from './Footer';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/items/:item" component={Search} />
         <Route path="/" component={Search} />
       </Switch>
+      <Footer />
     </>
   );
 };
