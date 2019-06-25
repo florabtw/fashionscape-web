@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Select from 'react-select';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import ColorPicker from './ColorPicker';
 import ItemPicker from './ItemPicker';
+import {searchFromRoute} from './Search';
 
 import './SearchBox.css';
 
@@ -31,17 +32,31 @@ const toUrl = ({color, isByColor, item, slot}) => {
 };
 
 const SearchBox = props => {
+  const {history, location, match} = props;
+
   const {
     color: defaultColor,
+    isByColor: defaultIsByColor,
     item: defaultItem,
     slot: defaultSlot,
-    isByColor: defaultIsByColor,
-  } = props;
+  } = searchFromRoute({location, match});
 
   const [color, setColor] = useState(defaultColor);
   const [item, setItem] = useState(defaultItem);
   const [slot, setSlot] = useState(toOption(defaultSlot));
   const [isByColor, setIsByColor] = useState(defaultIsByColor);
+  const [shouldUpdate, setShouldUpdate] = useState(false);
+
+  useEffect(() => {
+    const search = searchFromRoute({location, match});
+
+    setColor(search.color);
+    setIsByColor(search.isByColor);
+    setItem(search.item);
+    setSlot(toOption(search.slot));
+  }, [shouldUpdate, location, match]);
+
+  useEffect(() => history.listen(() => setShouldUpdate(true)));
 
   const handleToggle = () => setIsByColor(!isByColor);
 
@@ -89,4 +104,4 @@ const SearchBox = props => {
   );
 };
 
-export default SearchBox;
+export default withRouter(SearchBox);

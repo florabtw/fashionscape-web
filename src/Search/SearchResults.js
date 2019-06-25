@@ -1,18 +1,53 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+
+import config from '../config';
+import {searchFromRoute} from './Search';
 
 import './SearchResults.css';
 
+const searchUrl = ({color, item, isByColor, slot}) => {
+  color = encodeURIComponent(color);
+  item = encodeURIComponent(item);
+  slot = slot || '';
+
+  return isByColor
+    ? `${config.fashionscapeApi}/colors/${color}?slot=${slot}`
+    : `${config.fashionscapeApi}/items/${item}?slot=${slot}`;
+};
+
 const SearchResults = props => {
-  const {results, slot} = props;
+  const {history, location, match} = props;
+
+  const [shouldSearch, setShouldSearch] = useState(true);
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (!shouldSearch) return;
+    setShouldSearch(false);
+
+    const fetchResults = async search => {
+      const url = searchUrl(search);
+      const response = await fetch(url).then(res => res.json());
+
+      if (response.items) setResults(response.items);
+    };
+
+    const search = searchFromRoute({location, match});
+    fetchResults(search);
+  }, [shouldSearch, location, match]);
+
+  useEffect(() => history.listen(() => setShouldSearch(true)), [history]);
 
   if (results.length === 0) return null;
+
+  const search = searchFromRoute({location, match});
 
   return (
     <section className="results">
       <ol className="grid">
         {results.map(item => (
-          <SearchResult key={item.wiki.pageId} {...item} slot={slot} />
+          <SearchResult key={item.wiki.pageId} {...item} slot={search.slot} />
         ))}
       </ol>
     </section>
@@ -46,4 +81,4 @@ const SearchResult = ({colors, match, name, images, wiki, slot}) => {
   );
 };
 
-export default SearchResults;
+export default withRouter(SearchResults);
