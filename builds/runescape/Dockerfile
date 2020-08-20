@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package.json    .
 COPY yarn.lock       .
-COPY .env.production .
+COPY .env.runescape  .
 COPY src             src
 COPY public          public
 
