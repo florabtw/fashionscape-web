@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package.json    .
 COPY yarn.lock       .
-COPY .env.oldschool  .
+COPY .env.oldschool  .env.production
 COPY src             src
 COPY public          public
 
