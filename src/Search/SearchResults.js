@@ -47,7 +47,7 @@ const SearchResults = props => {
     <section className="results">
       <ol className="grid">
         {results.map(item => (
-          <SearchResult key={item.wiki.pageId} {...item} slot={search.slot} />
+          <SearchResult key={item.name} {...item} slot={search.slot} />
         ))}
       </ol>
     </section>
