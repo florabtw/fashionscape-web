@@ -60,7 +60,7 @@ const SearchBox = props => {
     <div className="search">
       <div className="search__row">
         <button className="input input--square toggle" onClick={handleToggle}>
-          {isByColor ? 'By item' : 'By color'}
+          {isByColor ? 'By color' : 'By item'}
         </button>
         {isByColor ? (
           <ColorPicker onChange={setColor} value={color} />
