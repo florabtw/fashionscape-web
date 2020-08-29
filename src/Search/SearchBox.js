@@ -4,23 +4,42 @@ import {Link, withRouter} from 'react-router-dom';
 
 import ColorPicker from './ColorPicker';
 import ItemPicker from './ItemPicker';
+import config from '../config';
 import {searchFromRoute} from './Search';
 
 import './SearchBox.css';
 
-const slotOptions = [
-  {label: 'Ammunition', value: 'ammunition'},
-  {label: 'Body', value: 'body'},
-  {label: 'Cape', value: 'cape'},
-  {label: 'Feet', value: 'feet'},
-  {label: 'Hand', value: 'hand'},
-  {label: 'Head', value: 'head'},
-  {label: 'Leg', value: 'leg'},
-  {label: 'Neck', value: 'neck'},
-  {label: 'Ring', value: 'ring'},
-  {label: 'Shield', value: 'shield'},
-  {label: 'Weapon', value: 'weapon'},
-];
+const slotOptions = {
+  oldschool: [
+    {label: 'Ammunition', value: 'ammunition'},
+    {label: 'Body', value: 'body'},
+    {label: 'Cape', value: 'cape'},
+    {label: 'Feet', value: 'feet'},
+    {label: 'Hand', value: 'hand'},
+    {label: 'Head', value: 'head'},
+    {label: 'Legs', value: 'leg'},
+    {label: 'Neck', value: 'neck'},
+    {label: 'Ring', value: 'ring'},
+    {label: 'Shield', value: 'shield'},
+    {label: 'Weapon', value: 'weapon'},
+  ],
+  runescape: [
+    {label: 'Ammunition', value: 'ammunition'},
+    {label: 'Back', value: 'back'},
+    {label: 'Feet', value: 'feet'},
+    {label: 'Hand', value: 'hand'},
+    {label: 'Head', value: 'head'},
+    {label: 'Legs', value: 'leg'},
+    {label: 'Main hand', value: 'main_hand'},
+    {label: 'Neck', value: 'neck'},
+    {label: 'Off-hand', value: 'off-hand'},
+    {label: 'Pocket', value: 'pocket'},
+    {label: 'Ring', value: 'ring'},
+    {label: 'Sigil', value: 'sigil'},
+    {label: 'Torso', value: 'torso'},
+    {label: 'Two-handed', value: 'two-handed'},
+  ],
+}[config.release];
 
 const toOption = value => slotOptions.find(opt => opt.value === value);
 
