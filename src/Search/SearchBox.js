@@ -9,20 +9,21 @@ import {searchFromRoute} from './Search';
 import './SearchBox.css';
 
 const slotOptions = [
-  {label: 'Ammunition', value: 'Ammunition'},
-  {label: 'Body', value: 'Body'},
-  {label: 'Cape', value: 'Cape'},
-  {label: 'Feet', value: 'Feet'},
-  {label: 'Hand', value: 'Hand'},
-  {label: 'Head', value: 'Head'},
-  {label: 'Leg', value: 'Leg'},
-  {label: 'Neck', value: 'Neck'},
-  {label: 'Ring', value: 'Ring'},
-  {label: 'Shield', value: 'Shield'},
-  {label: 'Weapon', value: 'Weapon'},
+  {label: 'Ammunition', value: 'ammunition'},
+  {label: 'Body', value: 'body'},
+  {label: 'Cape', value: 'bape'},
+  {label: 'Feet', value: 'feet'},
+  {label: 'Hand', value: 'hand'},
+  {label: 'Head', value: 'head'},
+  {label: 'Leg', value: 'leg'},
+  {label: 'Neck', value: 'neck'},
+  {label: 'Ring', value: 'ring'},
+  {label: 'Shield', value: 'shield'},
+  {label: 'Weapon', value: 'weapon'},
 ];
 
-const toOption = value => value && {label: value, value};
+const toOption = value => slotOptions.find(opt => opt.value === value);
+
 const toUrl = ({color, isByColor, item, slot}) => {
   const slotQuery = slot ? `?slot=${slot.value}` : '';
 
@@ -34,17 +35,12 @@ const toUrl = ({color, isByColor, item, slot}) => {
 const SearchBox = props => {
   const {history, location, match} = props;
 
-  const {
-    color: defaultColor,
-    isByColor: defaultIsByColor,
-    item: defaultItem,
-    slot: defaultSlot,
-  } = searchFromRoute({location, match});
+  const search = searchFromRoute({location, match});
 
-  const [color, setColor] = useState(defaultColor);
-  const [item, setItem] = useState(defaultItem);
-  const [slot, setSlot] = useState(toOption(defaultSlot));
-  const [isByColor, setIsByColor] = useState(defaultIsByColor);
+  const [color, setColor] = useState(search.color);
+  const [item, setItem] = useState(search.item);
+  const [slot, setSlot] = useState(toOption(search.slot));
+  const [isByColor, setIsByColor] = useState(search.isByColor);
   const [shouldUpdate, setShouldUpdate] = useState(false);
 
   useEffect(() => {
