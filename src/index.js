@@ -4,10 +4,11 @@ import {BrowserRouter} from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 import App from './App';
+import config from './config';
 
 import './index.css';
 
-ReactGA.initialize('UA-101624095-5');
+ReactGA.initialize(config.analytics.trackingId);
 
 ReactDOM.render(
   <BrowserRouter>
