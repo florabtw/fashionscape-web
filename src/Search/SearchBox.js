@@ -11,7 +11,7 @@ import './SearchBox.css';
 const slotOptions = [
   {label: 'Ammunition', value: 'ammunition'},
   {label: 'Body', value: 'body'},
-  {label: 'Cape', value: 'bape'},
+  {label: 'Cape', value: 'cape'},
   {label: 'Feet', value: 'feet'},
   {label: 'Hand', value: 'hand'},
   {label: 'Head', value: 'head'},
