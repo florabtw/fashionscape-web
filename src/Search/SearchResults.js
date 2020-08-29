@@ -12,8 +12,8 @@ const searchUrl = ({color, item, isByColor, slot}) => {
   slot = slot || '';
 
   return isByColor
-    ? `${config.fashionscapeApi}/colors/${color}?slot=${slot}`
-    : `${config.fashionscapeApi}/items/${item}?slot=${slot}`;
+    ? `${config.api}/colors/${color}?slot=${slot}`
+    : `${config.api}/items/${item}?slot=${slot}`;
 };
 
 const SearchResults = props => {

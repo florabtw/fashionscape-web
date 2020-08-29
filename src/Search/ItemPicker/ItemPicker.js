@@ -14,7 +14,7 @@ const ItemPicker = props => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const url = `${config.fashionscapeApi}/items`;
+      const url = `${config.api}/items`;
       const results = await fetch(url).then(res => res.json());
 
       if (!results.items) return;

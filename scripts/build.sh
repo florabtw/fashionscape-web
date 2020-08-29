@@ -10,9 +10,3 @@ docker build                     \
   -f builds/oldschool/Dockerfile \
   -t $USERNAME/$IMAGE:latest     \
   .
-
-docker build                           \
-  --no-cache                           \
-  -f builds/runescape/Dockerfile       \
-  -t $USERNAME/$IMAGE:latest-runescape \
-  .
