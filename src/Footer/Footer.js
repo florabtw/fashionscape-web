@@ -35,7 +35,7 @@ const Footer = () => {
         eventLabel="donate"
         to="https://ko-fi.com/nickontheweb"
         target="_blank">
-        donate ☕
+        donate <span role="img" aria-label="coffee">☕</span>
       </OutboundLink>
     </footer>
   );

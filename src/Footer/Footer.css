@@ -6,8 +6,8 @@
   height: 3rem;
 }
 
-.footer a,
-.footer span {
+.footer > a,
+.footer > span {
   color: #333333;
   margin-left: 1rem;
   text-decoration: none;
