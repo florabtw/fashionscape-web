@@ -35,7 +35,6 @@ const slotOptions = {
     {label: 'Off-hand', value: 'off-hand'},
     {label: 'Pocket', value: 'pocket'},
     {label: 'Ring', value: 'ring'},
-    {label: 'Sigil', value: 'sigil'},
     {label: 'Torso', value: 'torso'},
     {label: 'Two-handed', value: 'two-handed'},
   ],
